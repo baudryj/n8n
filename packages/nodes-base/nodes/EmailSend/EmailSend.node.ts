@@ -61,6 +61,14 @@ export class EmailSend implements INodeType {
 				description: 'Email address of BCC recipient',
 			},
 			{
+				displayName: 'REPLYTO Email',
+				name: 'replytoEmail',
+				type: 'string',
+				default: '',
+				placeholder: 'bcc@example.com',
+				description: 'Email address that the reply message is sent',
+			},
+			{
 				displayName: 'Subject',
 				name: 'subject',
 				type: 'string',
@@ -131,6 +139,7 @@ export class EmailSend implements INodeType {
 				const toEmail = this.getNodeParameter('toEmail', itemIndex) as string;
 				const ccEmail = this.getNodeParameter('ccEmail', itemIndex) as string;
 				const bccEmail = this.getNodeParameter('bccEmail', itemIndex) as string;
+				const replytoEmail = this.getNodeParameter('replytoEmail', itemIndex) as string;
 				const subject = this.getNodeParameter('subject', itemIndex) as string;
 				const text = this.getNodeParameter('text', itemIndex) as string;
 				const html = this.getNodeParameter('html', itemIndex) as string;
@@ -167,6 +176,7 @@ export class EmailSend implements INodeType {
 					to: toEmail,
 					cc: ccEmail,
 					bcc: bccEmail,
+					replyTo: replytoEmail,
 					subject,
 					text,
 					html,
